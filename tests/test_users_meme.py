@@ -14,6 +14,7 @@ TEST_INVALID_DATA = [
 ]
 
 
+@pytest.mark.smoke
 @pytest.mark.parametrize("body", TEST_VALID)
 def test_post_meme_valid(crete_meme_endpoints, token_post, body):
     crete_meme_endpoints.create_new_meme(body, token_post)
@@ -99,6 +100,7 @@ def test_put_net_token(update_meme_endpoints, meme_id):
 """Запрос всех мемов"""
 
 
+@pytest.mark.smoke
 def test_get_all_meme(get_meme_endpoint, token_post):
     get_meme_endpoint.get_all_meme(headers={'Authorization': f'{token_post}'})
     get_meme_endpoint.validate_schema(MemeShema)
@@ -119,6 +121,7 @@ def test_getting_meme_by_id(get_meme_endpoint, meme_id, token_post):
 """Удаление поста"""
 
 
+@pytest.mark.smoke
 def test_delete_meme_valid(delete_meme_endpoints, meme_id, token_post):
     body = {
         "id": meme_id,
