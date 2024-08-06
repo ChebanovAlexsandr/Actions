@@ -12,6 +12,11 @@ on:
         - all
         - smoke
         
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 
 jobs:
   run-tests:
